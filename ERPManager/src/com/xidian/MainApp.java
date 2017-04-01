@@ -6,12 +6,14 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.xidian.util.MybatisUtils;
 import com.xidian.view.LoginController;
+import com.xidian.view.MainController;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -59,8 +61,8 @@ public class MainApp extends Application {
 	        primaryStage.setScene(scene);
 
 	        // Give the controller access to the main app.
-	        LoginController controller = loader.getController();
-	        controller.setMainApp(this);
+	        LoginController loginController = loader.getController();
+	        loginController.setMainApp(this);
 
 	        primaryStage.show();
 
@@ -73,5 +75,53 @@ public class MainApp extends Application {
     public Stage getPrimaryStage() {
         return primaryStage;
     }
+
+	public void showMainWindow() {
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/Main.fxml"));
+			AnchorPane page = (AnchorPane)loader.load();
+
+			primaryStage.close();//关闭登录界面
+			Stage mainStage = new Stage();
+			mainStage.setTitle("管理界面");
+			mainStage.initModality(Modality.WINDOW_MODAL);
+//			mainStage.setFullScreen(true);
+			mainStage.getIcons().add(new Image("file:resources/images/person.png"));
+
+			Scene scene = new Scene(page);
+			mainStage.setScene(scene);
+
+			MainController mainController = loader.getController();
+			mainController.setMainApp(this);
+
+			mainStage.showAndWait();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void showNewCustomer(AnchorPane anchorPaneContent) {
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/NewCustomer.fxml"));
+			AnchorPane page = (AnchorPane)loader.load();
+
+//			newCustomerStage.setTitle("管理界面");
+//			mainStage.initModality(Modality.WINDOW_MODAL);
+//			mainStage.setFullScreen(true);
+//			mainStage.getIcons().add(new Image("file:resources/images/person.png"));
+
+			anchorPaneContent.getChildren().add(page);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 }

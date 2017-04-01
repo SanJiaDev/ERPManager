@@ -50,7 +50,7 @@ public class LoginController {
 		{
 			if(password.equals(managerUser.getPassword()))
 			{
-				messageLabel.setText("登录成功！");
+				mainApp.showMainWindow();
 			}
 			else
 			{
