@@ -28,9 +28,13 @@ public class MainController {
         this.mainApp = mainApp;
     }
 
+	/**
+	 * 打开新建客户面板
+	 */
 	@FXML
 	private void handleNewCustomer()
 	{
 		mainApp.showNewCustomer(anchorPaneContent);
 	}
+
 }

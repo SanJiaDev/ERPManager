@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.xidian.util.MybatisUtils;
 import com.xidian.view.LoginController;
 import com.xidian.view.MainController;
+import com.xidian.view.NewCustomerController;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -111,12 +112,10 @@ public class MainApp extends Application {
 			loader.setLocation(MainApp.class.getResource("view/NewCustomer.fxml"));
 			AnchorPane page = (AnchorPane)loader.load();
 
-//			newCustomerStage.setTitle("管理界面");
-//			mainStage.initModality(Modality.WINDOW_MODAL);
-//			mainStage.setFullScreen(true);
-//			mainStage.getIcons().add(new Image("file:resources/images/person.png"));
-
 			anchorPaneContent.getChildren().add(page);
+
+			NewCustomerController newCustomerController = loader.getController();
+			newCustomerController.setMainApp(this);
 		}
 		catch (IOException e) {
 			e.printStackTrace();

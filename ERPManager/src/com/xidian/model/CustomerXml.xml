@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xidian.CustomerXml"> <!-- 命名空间是文件的包名，定位该文件在哪个包下 -->
+
+<!-- 	<select id="getUser" parameterType="String" resultType="ManagerUser">
+		select * from manageruser where username = #{username}
+	</select> -->
+
+<!-- 	<select id="getAllUser" resultType="User">
+		select * from users;
+	</select> -->
+
+<!-- 	<select id="getUserByName" parameterType="String" resultType="User">
+		select * from users where name like #{name};
+	</select> -->
+
+	<insert id="addCustomer" parameterType="Customer">
+		insert into customer (auid,    rank,    customername,    sex,    age,    idcard,    area,    address,    phone,    qq,    weixin)
+		values               (#{auid}, #{rank}, #{customerName}, #{sex}, #{age}, #{idcard}, #{area}, #{address}, #{phone}, #{qq}, #{weixin});
+	</insert>
+
+<!-- 	<delete id="deleteUser" parameterType="int">
+		delete from users where id = #{id};
+	</delete> -->
+
+<!-- 	<update id="updateUser" parameterType="User">
+		update users set name = #{name}, age = #{age};
+		where id = #{id};
+	</update>  -->
+
+</mapper>

@@ -61,6 +61,8 @@ public class LoginController {
 		{
 			messageLabel.setText("用户名或密码错误！");
 		}
+
+		sqlSession.close();
 	}
 
 
