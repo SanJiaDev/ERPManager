@@ -1,101 +1,144 @@
 package com.xidian.model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Customer {
 
-	private int id;
-	private String auid;
-	private String rank;
-	private String customerName;
-	private String sex;
-	private int age;
-	private String idcard;
-	private String area;
-	private String address;
-	private String phone;
-	private String qq;
-	private String weixin;
-	private int state;// 0：激活 1：未激活
+	private IntegerProperty id;
+	private StringProperty auid;
+	private StringProperty rank;
+	private StringProperty customerName;
+	private StringProperty sex;
+	private IntegerProperty age;
+	private StringProperty idcard;
+	private StringProperty area;
+	private StringProperty address;
+	private StringProperty phone;
+	private StringProperty qq;
+	private StringProperty weixin;
+	private IntegerProperty state;// 0：激活 1：未激活
 	public Customer() {
 
 	}
 	public int getId() {
+		return id.get();
+	}
+	public IntegerProperty idProperty(){
 		return id;
 	}
 	public String getAuid() {
+		return auid.get();
+	}
+	public StringProperty auidProperty(){
 		return auid;
 	}
 	public String getRank() {
+		return rank.get();
+	}
+	public StringProperty rankProperty(){
 		return rank;
 	}
 	public String getCustomerName() {
+		return customerName.get();
+	}
+	public StringProperty customerNameProperty(){
 		return customerName;
 	}
 	public String getSex() {
+		return sex.get();
+	}
+	public StringProperty sexProperty(){
 		return sex;
 	}
 	public int getAge() {
+		return age.get();
+	}
+	public IntegerProperty ageProperty(){
 		return age;
 	}
 	public String getIdcard() {
+		return idcard.get();
+	}
+	public StringProperty idcardProperty(){
 		return idcard;
 	}
 	public String getArea() {
+		return area.get();
+	}
+	public StringProperty areaProperty(){
 		return area;
 	}
 	public String getAddress() {
+		return address.get();
+	}
+	public StringProperty addressProperty(){
 		return address;
 	}
 	public String getPhone() {
+		return phone.get();
+	}
+	public StringProperty phoneProperty(){
 		return phone;
 	}
 	public String getQq() {
+		return qq.get();
+	}
+	public StringProperty qqProperty(){
 		return qq;
 	}
 	public String getWeixin() {
+		return weixin.get();
+	}
+	public StringProperty weixinProperty(){
 		return weixin;
 	}
 	public int getState() {
+		return state.get();
+	}
+	public IntegerProperty stateProperty(){
 		return state;
 	}
 	public void setId(int id) {
-		this.id = id;
+		this.id = new SimpleIntegerProperty(id);
 	}
 	public void setAuid(String auid) {
-		this.auid = auid;
+		this.auid= new SimpleStringProperty(auid);
 	}
 	public void setRank(String rank) {
-		this.rank = rank;
+		this.rank = new SimpleStringProperty(rank);
 	}
 	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
+		this.customerName = new SimpleStringProperty(customerName);
 	}
 	public void setSex(String sex) {
-		this.sex = sex;
+		this.sex = new SimpleStringProperty(sex);
 	}
 	public void setAge(int age) {
-		this.age = age;
+		this.age = new SimpleIntegerProperty(age);
 	}
 	public void setIdcard(String idcard) {
-		this.idcard = idcard;
+		this.idcard = new SimpleStringProperty(idcard);
 	}
 	public void setArea(String area) {
-		this.area = area;
+		this.area = new SimpleStringProperty(area);
 	}
 	public void setAddress(String address) {
-		this.address = address;
+		this.address = new SimpleStringProperty(address);
 	}
 	public void setPhone(String phone) {
-		this.phone = phone;
+		this.phone = new SimpleStringProperty(phone);
 	}
 	public void setQq(String qq) {
-		this.qq = qq;
+		this.qq = new SimpleStringProperty(qq);
 	}
 	public void setWeixin(String weixin) {
-		this.weixin = weixin;
+		this.weixin = new SimpleStringProperty(weixin);
 	}
 	public void setState(int state) {
-		this.state = state;
+		this.state = new SimpleIntegerProperty(state);
 	}
 	@Override
 	public String toString() {

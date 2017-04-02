@@ -2,17 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xidian.CustomerXml"> <!-- 命名空间是文件的包名，定位该文件在哪个包下 -->
 
-<!-- 	<select id="getUser" parameterType="String" resultType="ManagerUser">
-		select * from manageruser where username = #{username}
-	</select> -->
+	<select id="getCustomerByAuid" parameterType="String" resultType="Customer">
+		select * from customer where auid = #{auid}
+	</select>
 
-<!-- 	<select id="getAllUser" resultType="User">
-		select * from users;
-	</select> -->
+	<select id="getCustomerByName" parameterType="String" resultType="Customer">
+		select * from customer where customername = #{customerName};
+	</select>
 
-<!-- 	<select id="getUserByName" parameterType="String" resultType="User">
-		select * from users where name like #{name};
-	</select> -->
+	<select id="getCustomerByRank" parameterType="String" resultType="Customer">
+		select * from customer where rank = #{rank};
+	</select>
+
+	<select id="getCustomerByRankAndName" parameterType="Customer" resultType="Customer">
+		select * from customer where customername = #{customerName} and rank = #{rank};
+	</select>
+
+	<select id="getAllCustomer" resultType="Customer">
+		select * from customer;
+	</select>
 
 	<insert id="addCustomer" parameterType="Customer">
 		insert into customer (auid,    rank,    customername,    sex,    age,    idcard,    area,    address,    phone,    qq,    weixin)

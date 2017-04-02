@@ -135,14 +135,6 @@ public class NewCustomerController {
 		}
 	}
 
-	/**
-	 * 查询客户
-	 */
-	@FXML
-	private void handleQueryCustomer()
-	{
-
-	}
     /**
      * Validates the user input in the text fields.
      *

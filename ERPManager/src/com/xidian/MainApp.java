@@ -8,6 +8,7 @@ import com.xidian.util.MybatisUtils;
 import com.xidian.view.LoginController;
 import com.xidian.view.MainController;
 import com.xidian.view.NewCustomerController;
+import com.xidian.view.QueryCustomerController;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,7 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 
 	private Stage primaryStage;
+	private Stage mainStage;
 	private AnchorPane loginView;
 
 	private  SqlSession sqlSession = MybatisUtils.getSqlSession();
@@ -85,7 +87,7 @@ public class MainApp extends Application {
 			AnchorPane page = (AnchorPane)loader.load();
 
 			primaryStage.close();//关闭登录界面
-			Stage mainStage = new Stage();
+			mainStage = new Stage();
 			mainStage.setTitle("管理界面");
 			mainStage.initModality(Modality.WINDOW_MODAL);
 //			mainStage.setFullScreen(true);
@@ -112,10 +114,36 @@ public class MainApp extends Application {
 			loader.setLocation(MainApp.class.getResource("view/NewCustomer.fxml"));
 			AnchorPane page = (AnchorPane)loader.load();
 
+			//先移除面板中的内容
+			anchorPaneContent.getChildren().removeAll(anchorPaneContent.getChildren());
+			//增加新建客户面板
 			anchorPaneContent.getChildren().add(page);
 
 			NewCustomerController newCustomerController = loader.getController();
 			newCustomerController.setMainApp(this);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void showQueryCustomer(AnchorPane anchorPaneContent)
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/QueryCustomer.fxml"));
+			AnchorPane page = (AnchorPane)loader.load();
+
+
+			//先移除面板中的内容
+			anchorPaneContent.getChildren().removeAll(anchorPaneContent.getChildren());
+			//增加查询内容
+			anchorPaneContent.getChildren().add(page);
+			mainStage.setMaximized(true);
+			QueryCustomerController queryCustomerController = loader.getController();
+			queryCustomerController.setMainApp(this);
 		}
 		catch (IOException e) {
 			e.printStackTrace();

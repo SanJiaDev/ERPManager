@@ -37,4 +37,12 @@ public class MainController {
 		mainApp.showNewCustomer(anchorPaneContent);
 	}
 
+	/**
+	 * 打开查询客户面板
+	 */
+	@FXML
+	private void handleQueryCustomer()
+	{
+		mainApp.showQueryCustomer(anchorPaneContent);
+	}
 }
