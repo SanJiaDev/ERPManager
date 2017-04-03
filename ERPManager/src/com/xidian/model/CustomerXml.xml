@@ -31,9 +31,9 @@
 		delete from users where id = #{id};
 	</delete> -->
 
-<!-- 	<update id="updateUser" parameterType="User">
-		update users set name = #{name}, age = #{age};
+	<update id="updateCustomer" parameterType="Customer">
+		update customer set rank = #{rank}, customername = #{customerName}, sex = #{sex}, age = #{age}, idcard = #{idcard}, area = #{area}, address = #{address}, phone = #{phone}, qq = #{qq}, weixin = #{weixin}
 		where id = #{id};
-	</update>  -->
+	</update>
 
 </mapper>

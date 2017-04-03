@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.xidian.model.Customer;
 import com.xidian.util.MybatisUtils;
 import com.xidian.view.LoginController;
 import com.xidian.view.MainController;
@@ -18,6 +19,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**程序入口类，管理界面，控制器
+ * @author lfq
+ *
+ */
 public class MainApp extends Application {
 
 	private Stage primaryStage;
@@ -49,6 +54,9 @@ public class MainApp extends Application {
 
 
 
+	/**
+	 * 显示登录界面
+	 */
 	public void showLoginView() {
 	    try {
 	        // Load root layout from fxml file.
@@ -77,6 +85,9 @@ public class MainApp extends Application {
         return primaryStage;
     }
 
+	/**
+	 * 显示主界面
+	 */
 	public void showMainWindow() {
 		try
 		{
@@ -105,6 +116,9 @@ public class MainApp extends Application {
 
 	}
 
+	/**显示新建客户信息界面
+	 * @param anchorPaneContent
+	 */
 	public void showNewCustomer(AnchorPane anchorPaneContent) {
 		try
 		{
@@ -126,6 +140,9 @@ public class MainApp extends Application {
 
 	}
 
+	/**显示查询客户信息界面
+	 * @param anchorPaneContent
+	 */
 	public void showQueryCustomer(AnchorPane anchorPaneContent)
 	{
 		try
@@ -139,19 +156,41 @@ public class MainApp extends Application {
 			anchorPaneContent.getChildren().removeAll(anchorPaneContent.getChildren());
 			//增加查询内容
 			anchorPaneContent.getChildren().add(page);
-//			Stage queryStage = new Stage();
-//			queryStage.setTitle("查询界面");
-//			queryStage.initModality(Modality.WINDOW_MODAL);
-//			queryStage.getIcons().add(new Image("file:resources/images/person.png"));
-//
-//			Scene scene = new Scene(page);
-//			queryStage.setScene(scene);
-//			queryStage.setMaximized(true);
 
 			QueryCustomerController queryCustomerController = loader.getController();
 			queryCustomerController.setMainApp(this);
 
-//			queryStage.showAndWait();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/**显示修改客户信息界面
+	 * @param customer
+	 */
+	public void showEditCustomer(Customer customer) {
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/EditCustomer.fxml"));
+			AnchorPane page = (AnchorPane)loader.load();
+
+			Stage editStage = new Stage();
+			editStage.setTitle("修改客户信息");
+			editStage.initModality(Modality.WINDOW_MODAL);
+			editStage.initOwner(mainStage);
+			editStage.getIcons().add(new Image("file:resources/images/person.png"));
+			Scene scene = new Scene(page);
+			editStage.setScene(scene);
+
+			QueryCustomerController queryCustomerController = loader.getController();
+			queryCustomerController.setMainApp(this);
+			queryCustomerController.setCustomer(customer);
+			queryCustomerController.setEditStage(editStage);
+
+			editStage.showAndWait();
 		}
 		catch (IOException e) {
 			e.printStackTrace();

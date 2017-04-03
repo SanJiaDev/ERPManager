@@ -1,12 +1,15 @@
 package com.xidian.view;
 
-import org.apache.ibatis.session.SqlSession;
-
 import com.xidian.MainApp;
 
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * 管理界面控制器
+ * @author lfq
+ *
+ */
 public class MainController {
 
 	@FXML

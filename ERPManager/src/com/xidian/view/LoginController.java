@@ -12,6 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 
+/**管理用户登录控制器
+ * @author lfq
+ *
+ */
 public class LoginController {
 	@FXML
 	private TextField usernameField;
@@ -39,6 +43,9 @@ public class LoginController {
 
 	}
 
+	/**
+	 * 处理登录
+	 */
 	@FXML
 	private void handleLogin()
 	{

@@ -13,6 +13,10 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.property.adapter.JavaBeanObjectProperty;
 import javafx.beans.property.adapter.JavaBeanObjectPropertyBuilder;
 
+/**客户信息实体类
+ * @author lfq
+ *
+ */
 public class Customer {
 
 	private IntegerProperty id;
