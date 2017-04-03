@@ -1,9 +1,17 @@
 package com.xidian.model;
 
+import java.time.LocalDate;
+
+import com.xidian.util.DateUtil;
+
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.property.adapter.JavaBeanObjectProperty;
+import javafx.beans.property.adapter.JavaBeanObjectPropertyBuilder;
 
 public class Customer {
 
@@ -20,6 +28,8 @@ public class Customer {
 	private StringProperty qq;
 	private StringProperty weixin;
 	private IntegerProperty state;// 0：激活 1：未激活
+	private ObjectProperty<LocalDate> createTime;
+
 	public Customer() {
 
 	}
@@ -140,12 +150,18 @@ public class Customer {
 	public void setState(int state) {
 		this.state = new SimpleIntegerProperty(state);
 	}
-	@Override
-	public String toString() {
-		return "Customer [id=" + id + ", auid=" + auid + ", rank=" + rank + ", customerName=" + customerName + ", sex="
-				+ sex + ", age=" + age + ", idcard=" + idcard + ", area=" + area + ", address=" + address + ", phone="
-				+ phone + ", qq=" + qq + ", weixin=" + weixin + ", state=" + state + "]";
-	}
+    public LocalDate getCreateTime() {
+        return createTime.get();
+    }
+
+    public void setCreateTime(LocalDate createTime) {
+        this.createTime = new SimpleObjectProperty<LocalDate>(createTime);
+    }
+
+    public ObjectProperty<LocalDate> createTimeProperty() {
+        return createTime;
+    }
+
 
 
 

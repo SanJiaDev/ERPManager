@@ -23,8 +23,8 @@
 	</select>
 
 	<insert id="addCustomer" parameterType="Customer">
-		insert into customer (auid,    rank,    customername,    sex,    age,    idcard,    area,    address,    phone,    qq,    weixin)
-		values               (#{auid}, #{rank}, #{customerName}, #{sex}, #{age}, #{idcard}, #{area}, #{address}, #{phone}, #{qq}, #{weixin});
+		insert into customer (auid,    rank,    customername,    sex,    age,    idcard,    area,    address,    phone,    qq,    weixin,  createtime)
+		values               (#{auid}, #{rank}, #{customerName}, #{sex}, #{age}, #{idcard}, #{area}, #{address}, #{phone}, #{qq}, #{weixin}, #{createTime});
 	</insert>
 
 <!-- 	<delete id="deleteUser" parameterType="int">

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xidian.view.QueryCustomerController">
+<AnchorPane prefHeight="800.0" prefWidth="1175.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xidian.view.QueryCustomerController">
    <children>
       <TextField fx:id="auidField" layoutX="71.0" layoutY="14.0" />
       <Button layoutX="343.0" layoutY="48.0" mnemonicParsing="false" onAction="#handleQueryCustomer" text="查询客户" />
@@ -24,6 +24,7 @@
             <TableColumn fx:id="qqColumn" prefWidth="75.0" text="QQ号" />
             <TableColumn fx:id="weixinColumn" prefWidth="75.0" text="微信号" />
             <TableColumn fx:id="stateColumn" prefWidth="75.0" text="是否激活" />
+            <TableColumn fx:id="createTimeColumn" prefWidth="75.0" text="创建时间" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

@@ -47,6 +47,9 @@ public class NewCustomerController {
 	@FXML
 	private TextField weixinField;
 
+	@FXML
+	private TextField createTimeField;
+
 	private MainApp mainApp;
 	private Customer customer;
 
@@ -95,6 +98,7 @@ public class NewCustomerController {
 			customer.setPhone(phoneField.getText());
 			customer.setQq(qqField.getText());
 			customer.setWeixin(weixinField.getText());
+			customer.setCreateTime(LocalDate.now());
 
 			SqlSession sqlSession = mainApp.getSqlSession();
 			int result = sqlSession.insert("com.xidian.CustomerXml.addCustomer", customer);

@@ -24,8 +24,6 @@ public class MainApp extends Application {
 	private Stage mainStage;
 	private AnchorPane loginView;
 
-	private  SqlSession sqlSession = MybatisUtils.getSqlSession();
-
 	public MainApp() {
 		super();
 	}
@@ -36,7 +34,7 @@ public class MainApp extends Application {
 
 	public SqlSession getSqlSession()
 	{
-		return sqlSession;
+		return MybatisUtils.getSqlSession();
 	}
 
 	@Override
@@ -90,7 +88,6 @@ public class MainApp extends Application {
 			mainStage = new Stage();
 			mainStage.setTitle("管理界面");
 			mainStage.initModality(Modality.WINDOW_MODAL);
-//			mainStage.setFullScreen(true);
 			mainStage.getIcons().add(new Image("file:resources/images/person.png"));
 
 			Scene scene = new Scene(page);
@@ -99,6 +96,7 @@ public class MainApp extends Application {
 			MainController mainController = loader.getController();
 			mainController.setMainApp(this);
 
+			mainStage.setMaximized(true);
 			mainStage.showAndWait();
 		}
 		catch (IOException e) {
@@ -136,14 +134,24 @@ public class MainApp extends Application {
 			loader.setLocation(MainApp.class.getResource("view/QueryCustomer.fxml"));
 			AnchorPane page = (AnchorPane)loader.load();
 
-
+			mainStage.setMaximized(true);
 			//先移除面板中的内容
 			anchorPaneContent.getChildren().removeAll(anchorPaneContent.getChildren());
 			//增加查询内容
 			anchorPaneContent.getChildren().add(page);
-			mainStage.setMaximized(true);
+//			Stage queryStage = new Stage();
+//			queryStage.setTitle("查询界面");
+//			queryStage.initModality(Modality.WINDOW_MODAL);
+//			queryStage.getIcons().add(new Image("file:resources/images/person.png"));
+//
+//			Scene scene = new Scene(page);
+//			queryStage.setScene(scene);
+//			queryStage.setMaximized(true);
+
 			QueryCustomerController queryCustomerController = loader.getController();
 			queryCustomerController.setMainApp(this);
+
+//			queryStage.showAndWait();
 		}
 		catch (IOException e) {
 			e.printStackTrace();
