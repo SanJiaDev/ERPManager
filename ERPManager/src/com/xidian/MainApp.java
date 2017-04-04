@@ -5,11 +5,13 @@ import java.io.IOException;
 import org.apache.ibatis.session.SqlSession;
 
 import com.xidian.model.Customer;
+import com.xidian.model.UpdateInfo;
 import com.xidian.util.MybatisUtils;
 import com.xidian.view.LoginController;
 import com.xidian.view.MainController;
 import com.xidian.view.NewCustomerController;
 import com.xidian.view.QueryCustomerController;
+import com.xidian.view.QueryUpdateInfoController;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -167,6 +169,33 @@ public class MainApp extends Application {
 
 	}
 
+	/**显示查询客户信息界面
+	 * @param anchorPaneContent
+	 */
+	public void showQueryUpdateInfo(AnchorPane anchorPaneContent)
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/QueryUpdateInfo.fxml"));
+			AnchorPane page = (AnchorPane)loader.load();
+
+			mainStage.setMaximized(true);
+			//先移除面板中的内容
+			anchorPaneContent.getChildren().removeAll(anchorPaneContent.getChildren());
+			//增加查询内容
+			anchorPaneContent.getChildren().add(page);
+
+			QueryUpdateInfoController queryUpdateInfoController = loader.getController();
+			queryUpdateInfoController.setMainApp(this);
+
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	/**显示修改客户信息界面
 	 * @param customer
 	 */
@@ -191,6 +220,34 @@ public class MainApp extends Application {
 			queryCustomerController.setEditStage(editStage);
 
 			editStage.showAndWait();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void showAddUpdateInfo(UpdateInfo selectedUpdateInfo) {
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/AddUpdateInfo.fxml"));
+			AnchorPane page = (AnchorPane)loader.load();
+
+			Stage addStage = new Stage();
+			addStage.setTitle("变更客户信息");
+			addStage.initModality(Modality.WINDOW_MODAL);
+			addStage.initOwner(mainStage);
+			addStage.getIcons().add(new Image("file:resources/images/person.png"));
+			Scene scene = new Scene(page);
+			addStage.setScene(scene);
+
+			QueryUpdateInfoController queryUpdateInfoController = loader.getController();
+			queryUpdateInfoController.setMainApp(this);
+			queryUpdateInfoController.setUpdateInfo(selectedUpdateInfo);
+			queryUpdateInfoController.setEditStage(addStage);
+
+			addStage.showAndWait();
 		}
 		catch (IOException e) {
 			e.printStackTrace();

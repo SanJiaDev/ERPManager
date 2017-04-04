@@ -19,6 +19,7 @@
                                  <children>
                                     <Button layoutX="-7.0" layoutY="3.0" mnemonicParsing="false" onAction="#handleNewCustomer" prefHeight="23.0" prefWidth="176.0" text="新建客户" />
                                     <Button layoutX="-7.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleQueryCustomer" prefHeight="23.0" prefWidth="176.0" text="查询客户" />
+                                    <Button layoutX="-7.0" layoutY="51.0" mnemonicParsing="false" onAction="#handleQueryUpdateInfo" prefHeight="23.0" prefWidth="176.0" text="变更客户" />
                                  </children></AnchorPane>
                         </content>
                       </TitledPane>

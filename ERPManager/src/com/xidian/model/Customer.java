@@ -31,7 +31,7 @@ public class Customer {
 	private StringProperty phone;
 	private StringProperty qq;
 	private StringProperty weixin;
-	private IntegerProperty state;// 0：激活 1：未激活
+	private StringProperty state;
 	private IntegerProperty balance;
 	private ObjectProperty<LocalDate> createTime;
 
@@ -116,10 +116,10 @@ public class Customer {
 	public IntegerProperty balanceProperty(){
 		return balance;
 	}
-	public int getState() {
+	public String getState() {
 		return state.get();
 	}
-	public IntegerProperty stateProperty(){
+	public StringProperty stateProperty(){
 		return state;
 	}
 	public void setId(int id) {
@@ -158,8 +158,8 @@ public class Customer {
 	public void setWeixin(String weixin) {
 		this.weixin = new SimpleStringProperty(weixin);
 	}
-	public void setState(int state) {
-		this.state = new SimpleIntegerProperty(state);
+	public void setState(String state) {
+		this.state = new SimpleStringProperty(state);
 	}
     public LocalDate getCreateTime() {
         return createTime.get();

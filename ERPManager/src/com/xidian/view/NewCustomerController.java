@@ -1,13 +1,10 @@
 package com.xidian.view;
 
 import java.time.LocalDate;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.xidian.MainApp;
-import com.xidian.model.Balance;
 import com.xidian.model.Customer;
 import com.xidian.model.UpdateInfo;
 import com.xidian.util.DataValicateUtil;
@@ -17,7 +14,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 
 /**保存客户信息控制器
@@ -160,7 +156,7 @@ public class NewCustomerController {
 				UpdateInfo updateInfo = new UpdateInfo();
 				updateInfo.setAuid(customer.getAuid());
 				updateInfo.setRank(customer.getRank());
-				updateInfo.setState(0);
+				updateInfo.setState("注册");
 				updateInfo.setUpdateTime(LocalDate.now());
 				updateInfo.setUpdateReason("注册");
 

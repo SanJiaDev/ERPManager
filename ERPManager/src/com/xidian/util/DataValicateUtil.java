@@ -34,7 +34,7 @@ public class DataValicateUtil {
 
 		// 判断用户输入是否为身份证号
 		if (customer.getIdcard() == null || customer.getIdcard().length() == 0) {
-			errorMessage += "请输入省份证号!\n";
+			errorMessage += "请输入身份证号!\n";
 		} else {
 			// 定义判别用户身份证号的正则表达式（要么是15位，要么是18位，最后一位可以为字母）
 			Pattern idcardPattern = Pattern.compile("(\\d{14}[0-9a-zA-Z])|(\\d{17}[0-9a-zA-Z])");

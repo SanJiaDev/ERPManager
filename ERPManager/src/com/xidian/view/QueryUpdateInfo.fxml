@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1175.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xidian.view.QueryUpdateInfoController">
+   <children>
+      <TableView fx:id="updateInfoTable" layoutX="19.0" layoutY="42.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+        <columns>
+          <TableColumn fx:id="auidColumn" prefWidth="75.0" text="授权号" />
+            <TableColumn fx:id="rankColumn" prefWidth="75.0" text="代理类别" />
+            <TableColumn fx:id="customernameColumn" prefWidth="75.0" text="姓名" />
+            <TableColumn fx:id="stateColumn" prefWidth="75.0" text="活跃状态" />
+            <TableColumn fx:id="updateTimeColumn" prefWidth="75.0" text="变更时间" />
+            <TableColumn fx:id="updateReasonColumn" prefWidth="75.0" text="变更原因" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Label layoutX="426.0" layoutY="14.0" text="授权号" />
+      <TextField fx:id="auidField" layoutX="472.0" layoutY="10.0" prefHeight="25.0" />
+      <Label layoutX="660.0" layoutY="14.0" text="客户姓名" />
+      <TextField fx:id="customernameField" layoutX="718.0" layoutY="10.0" prefHeight="25.0" />
+      <Button layoutX="610.0" layoutY="56.0" mnemonicParsing="false" onAction="#handleQueryUpdateInfo" prefWidth="100.0" text="查询" />
+   </children>
+</AnchorPane>

@@ -83,7 +83,7 @@ public class QueryCustomerController {
 	private TableColumn<Customer, Integer> balanceColumn;
 
 	@FXML
-	private TableColumn<Customer, Integer> stateColumn;
+	private TableColumn<Customer, String> stateColumn;
 
 	@FXML
 	private TableColumn<Customer, LocalDate> createTimeColumn;
@@ -321,7 +321,7 @@ public class QueryCustomerController {
 		qqColumn.setCellValueFactory(cellData -> cellData.getValue().qqProperty());
 		weixinColumn.setCellValueFactory(cellData -> cellData.getValue().weixinProperty());
 		balanceColumn.setCellValueFactory(cellData -> cellData.getValue().balanceProperty().asObject());
-		stateColumn.setCellValueFactory(cellData -> cellData.getValue().stateProperty().asObject());
+		stateColumn.setCellValueFactory(cellData -> cellData.getValue().stateProperty());
 		createTimeColumn.setCellValueFactory(cellData -> cellData.getValue().createTimeProperty());
 
 		//设置每一列的双击事件
@@ -337,8 +337,7 @@ public class QueryCustomerController {
 		qqColumn.setCellFactory(new CustomerStringCellFactory());
 		weixinColumn.setCellFactory(new CustomerStringCellFactory());
 		balanceColumn.setCellFactory(new CustomerIntegerCellFactory());
-		stateColumn.setCellFactory(new CustomerIntegerCellFactory());
-		auidColumn.setCellFactory(new CustomerStringCellFactory());
+		stateColumn.setCellFactory(new CustomerStringCellFactory());
 		createTimeColumn.setCellFactory(new CustomerLocalDateCellFactory());
 
 	}
@@ -349,11 +348,10 @@ public class QueryCustomerController {
 	@FXML
 	private void handleEditCustomer()
 	{
-		Alert alert = new Alert(AlertType.INFORMATION);
 
 		// 首先验证输入数据
-		customer.setAuid(auidField.getText());
-		customer.setRank(rankBox.getSelectionModel().getSelectedItem());
+//		customer.setAuid(auidField.getText());//授权号不变更
+//		customer.setRank(rankBox.getSelectionModel().getSelectedItem()); //这里不变更级别
 		customer.setCustomerName(customernameField.getText());
 		customer.setSex(sexBox.getSelectionModel().getSelectedItem());
 		customer.setIdcard(idcardField.getText());
@@ -374,6 +372,7 @@ public class QueryCustomerController {
 				sqlSession.close();
 			}
 
+			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setResizable(false);
 			alert.setTitle("修改结果");
 			alert.setHeaderText("");

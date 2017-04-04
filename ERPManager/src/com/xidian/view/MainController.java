@@ -48,4 +48,13 @@ public class MainController {
 	{
 		mainApp.showQueryCustomer(anchorPaneContent);
 	}
+
+	/**
+	 * 打开查询变更客户信息面板
+	 */
+	@FXML
+	private void handleQueryUpdateInfo()
+	{
+		mainApp.showQueryUpdateInfo(anchorPaneContent);
+	}
 }

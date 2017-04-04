@@ -7,4 +7,19 @@
 		values                 (#{auid},#{rank}, #{state}, #{updateTime}, #{updateReason});
 	</insert>
 
+	<select id="getUpdateInfoByAuid" parameterType="String" resultType="UpdateInfo">
+		select updateinfo.*, customername from updateinfo left join customer on updateinfo.auid = customer.auid
+		where updateinfo.auid = #{auid};
+	</select>
+
+	<select id="getUpdateInfoByName" parameterType="String" resultType="UpdateInfo">
+		select updateinfo.*, customername from updateinfo left join customer on updateinfo.auid = customer.auid
+		where customer.customername = #{customerName};
+	</select>
+
+	<select id="getAllUpdateInfo" resultType="UpdateInfo">
+		select updateinfo.*, customername from updateinfo left join customer on updateinfo.auid = customer.auid
+		order by updateinfo.auid;
+	</select>
+
 </mapper>

@@ -17,9 +17,10 @@ public class UpdateInfo {
 	private IntegerProperty id;
 	private StringProperty auid;
 	private StringProperty rank;
-	private IntegerProperty state;// 0：激活 1：未激活
+	private StringProperty state;
 	private ObjectProperty<LocalDate> updateTime;
 	private StringProperty updateReason;
+	private StringProperty customerName;
 
 	public UpdateInfo() {
 
@@ -43,10 +44,10 @@ public class UpdateInfo {
 	public StringProperty rankProperty(){
 		return rank;
 	}
-	public int getState() {
+	public String getState() {
 		return state.get();
 	}
-	public IntegerProperty stateProperty(){
+	public StringProperty stateProperty(){
 		return state;
 	}
 	public LocalDate getUpdateTime() {
@@ -61,6 +62,12 @@ public class UpdateInfo {
 	public StringProperty updateReasonProperty(){
 		return updateReason;
 	}
+	public String getCustomerName() {
+		return customerName.get();
+	}
+	public StringProperty customerNameProperty(){
+		return customerName;
+	}
 	public void setId(int id) {
 		this.id = new SimpleIntegerProperty(id);
 	}
@@ -70,14 +77,17 @@ public class UpdateInfo {
 	public void setRank(String rank) {
 		this.rank = new SimpleStringProperty(rank);
 	}
-	public void setState(int state) {
-		this.state = new SimpleIntegerProperty(state);
+	public void setState(String state) {
+		this.state = new SimpleStringProperty(state);
 	}
     public void setUpdateTime(LocalDate updateTime) {
         this.updateTime = new SimpleObjectProperty<LocalDate>(updateTime);
     }
 	public void setUpdateReason(String updateReason) {
 		this.updateReason = new SimpleStringProperty(updateReason);
+	}
+	public void setCustomerName(String customerName) {
+		this.customerName = new SimpleStringProperty(customerName);
 	}
 
 }

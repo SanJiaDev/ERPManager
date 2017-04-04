@@ -32,4 +32,9 @@
 		where id = #{id};
 	</update>
 
+	<update id="updateCustomerOfState" parameterType="Customer">
+		update customer set state = #{state}
+		where auid = #{auid};
+	</update>
+
 </mapper>
