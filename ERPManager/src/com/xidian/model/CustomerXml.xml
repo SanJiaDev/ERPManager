@@ -19,17 +19,13 @@
 	</select>
 
 	<select id="getAllCustomer" resultType="Customer">
-		select * from customer;
+		select customer.*, balance from customer inner join balance on customer.auid = balance.auid;
 	</select>
 
 	<insert id="addCustomer" parameterType="Customer">
 		insert into customer (auid,    rank,    customername,    sex,    age,    idcard,    area,    address,    phone,    qq,    weixin,  createtime)
 		values               (#{auid}, #{rank}, #{customerName}, #{sex}, #{age}, #{idcard}, #{area}, #{address}, #{phone}, #{qq}, #{weixin}, #{createTime});
 	</insert>
-
-<!-- 	<delete id="deleteUser" parameterType="int">
-		delete from users where id = #{id};
-	</delete> -->
 
 	<update id="updateCustomer" parameterType="Customer">
 		update customer set rank = #{rank}, customername = #{customerName}, sex = #{sex}, age = #{age}, idcard = #{idcard}, area = #{area}, address = #{address}, phone = #{phone}, qq = #{qq}, weixin = #{weixin}

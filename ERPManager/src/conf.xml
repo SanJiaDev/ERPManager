@@ -28,6 +28,7 @@
 	<mappers>
 		<mapper resource="com/xidian/model/ManagerUserXml.xml"/>
 		<mapper resource="com/xidian/model/CustomerXml.xml"/>
+		<mapper resource="com/xidian/model/BalanceXml.xml"/>
 	</mappers>
 
 </configuration>

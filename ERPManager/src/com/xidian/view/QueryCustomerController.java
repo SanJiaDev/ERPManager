@@ -80,6 +80,9 @@ public class QueryCustomerController {
 	private TableColumn<Customer, String> weixinColumn;
 
 	@FXML
+	private TableColumn<Customer, Integer> balanceColumn;
+
+	@FXML
 	private TableColumn<Customer, Integer> stateColumn;
 
 	@FXML
@@ -120,8 +123,6 @@ public class QueryCustomerController {
 	private ObservableList<Customer> customerData = FXCollections.observableArrayList();
 
 	private Stage editStage;
-
-	private boolean okClicked = false;
 
 	public QueryCustomerController() {
 
@@ -249,7 +250,7 @@ public class QueryCustomerController {
 		String customerName = customernameField.getText();
 		String rank = rankBox.getSelectionModel().getSelectedItem();
 
-		SqlSession sqlSession = mainApp.getSqlSession();
+		SqlSession sqlSession = mainApp.getSqlSession(true);
 
 		// 通过授权号查询客户信息
 		if (!"".equals(auid.trim())) {
@@ -292,7 +293,6 @@ public class QueryCustomerController {
 		customerTable.setTableMenuButtonVisible(true);
 
 		// 设置列中的文本居中
-		idColumn.setStyle( "-fx-alignment: CENTER;");
 		auidColumn.setStyle( "-fx-alignment: CENTER;");
 		rankColumn.setStyle( "-fx-alignment: CENTER;");
 		customernameColumn.setStyle( "-fx-alignment: CENTER;");
@@ -304,11 +304,11 @@ public class QueryCustomerController {
 		phoneColumn.setStyle( "-fx-alignment: CENTER;");
 		qqColumn.setStyle( "-fx-alignment: CENTER;");
 		weixinColumn.setStyle( "-fx-alignment: CENTER;");
+		balanceColumn.setStyle("-fx-alignment: CENTER;");
 		stateColumn.setStyle( "-fx-alignment: CENTER;");
 		createTimeColumn.setStyle( "-fx-alignment: CENTER;");
 
 		// 将数据放入表中的列
-		idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
 		auidColumn.setCellValueFactory(cellData -> cellData.getValue().auidProperty());
 		rankColumn.setCellValueFactory(cellData -> cellData.getValue().rankProperty());
 		customernameColumn.setCellValueFactory(cellData -> cellData.getValue().customerNameProperty());
@@ -320,11 +320,11 @@ public class QueryCustomerController {
 		phoneColumn.setCellValueFactory(cellData -> cellData.getValue().phoneProperty());
 		qqColumn.setCellValueFactory(cellData -> cellData.getValue().qqProperty());
 		weixinColumn.setCellValueFactory(cellData -> cellData.getValue().weixinProperty());
+		balanceColumn.setCellValueFactory(cellData -> cellData.getValue().balanceProperty().asObject());
 		stateColumn.setCellValueFactory(cellData -> cellData.getValue().stateProperty().asObject());
 		createTimeColumn.setCellValueFactory(cellData -> cellData.getValue().createTimeProperty());
 
 		//设置每一列的双击事件
-		idColumn.setCellFactory(new CustomerIntegerCellFactory());
 		auidColumn.setCellFactory(new CustomerStringCellFactory());
 		rankColumn.setCellFactory(new CustomerStringCellFactory());
 		customernameColumn.setCellFactory(new CustomerStringCellFactory());
@@ -336,6 +336,7 @@ public class QueryCustomerController {
 		phoneColumn.setCellFactory(new CustomerStringCellFactory());
 		qqColumn.setCellFactory(new CustomerStringCellFactory());
 		weixinColumn.setCellFactory(new CustomerStringCellFactory());
+		balanceColumn.setCellFactory(new CustomerIntegerCellFactory());
 		stateColumn.setCellFactory(new CustomerIntegerCellFactory());
 		auidColumn.setCellFactory(new CustomerStringCellFactory());
 		createTimeColumn.setCellFactory(new CustomerLocalDateCellFactory());
@@ -364,9 +365,14 @@ public class QueryCustomerController {
 //		customer.setCreateTime(LocalDate.now()); //修改，创建客户时间不变
 		if (DataValicateUtil.isInputValid(customer)) {
 
-			SqlSession sqlSession = mainApp.getSqlSession();
-			int result = sqlSession.update("com.xidian.CustomerXml.updateCustomer", customer);
-			sqlSession.close();
+			SqlSession sqlSession = mainApp.getSqlSession(true);
+			int result;
+			try {
+				result = sqlSession.update("com.xidian.CustomerXml.updateCustomer", customer);
+			}
+			finally{
+				sqlSession.close();
+			}
 
 			alert.setResizable(false);
 			alert.setTitle("修改结果");

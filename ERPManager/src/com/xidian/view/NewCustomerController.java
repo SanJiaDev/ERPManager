@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 import org.apache.ibatis.session.SqlSession;
 
 import com.xidian.MainApp;
+import com.xidian.model.Balance;
 import com.xidian.model.Customer;
 import com.xidian.util.DataValicateUtil;
 
@@ -143,44 +144,58 @@ public class NewCustomerController {
 		customer.setCreateTime(LocalDate.now());
 		if(DataValicateUtil.isInputValid(customer))
 		{
-			SqlSession sqlSession = mainApp.getSqlSession();
-			int result = sqlSession.insert("com.xidian.CustomerXml.addCustomer", customer);
-			sqlSession.close();
+			SqlSession sqlSession = mainApp.getSqlSession(false);//非自动提交，可用于事务
 
-			alert.setResizable(false);
-			alert.setTitle("保存结果");
-			alert.setHeaderText("");
-			if (result == 1)// 保存成功后清空表单数据
-			{
-				alert.setContentText("保存成功！");
+			int addCustomerResult = 0;
+			int addBalanceResult = 0;
+			try {
 
-				auidField.setText("");
-				rankBox.getSelectionModel().select("县代");
-				customernameField.setText("");
-				sexBox.getSelectionModel().select("男");
-				idcardField.setText("");
-				areaField.getSelectionModel().select("西安");
-				addressField.setText("");
-				phoneField.setText("");
-				qqField.setText("");
-				weixinField.setText("");
+				addCustomerResult = sqlSession.insert("com.xidian.CustomerXml.addCustomer", customer);
+
+				addBalanceResult = sqlSession.insert("com.xidian.BalanceXml.addBalance", customer.getAuid());
+
+				sqlSession.commit();//提交事务
 
 			}
-			else
+			finally
 			{
-				alert.setContentText("保存失败！");
-			}
+				sqlSession.close();
+				alert.setResizable(false);
+				alert.setTitle("保存结果");
+				alert.setHeaderText("");
+				if (addCustomerResult == 1 && addBalanceResult == 1)// 保存成功后清空表单数据
+				{
+					alert.setContentText("保存成功！");
 
-			alert.show();
-			if(alert.isShowing())
-			{
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+					auidField.setText("");
+					rankBox.getSelectionModel().select("县代");
+					customernameField.setText("");
+					sexBox.getSelectionModel().select("男");
+					idcardField.setText("");
+					areaField.getSelectionModel().select("西安");
+					addressField.setText("");
+					phoneField.setText("");
+					qqField.setText("");
+					weixinField.setText("");
+
 				}
-				alert.close();
+				else
+				{
+					alert.setContentText("保存失败！");
+				}
+
+				alert.show();
+				if(alert.isShowing())
+				{
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					alert.close();
+				}
 			}
+
 		}
 
 	}

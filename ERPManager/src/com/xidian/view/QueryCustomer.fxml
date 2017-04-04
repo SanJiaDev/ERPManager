@@ -11,7 +11,6 @@
       <Button layoutX="343.0" layoutY="48.0" mnemonicParsing="false" onAction="#handleQueryCustomer" text="查询客户" />
       <TableView fx:id="customerTable" layoutX="19.0" layoutY="42.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
         <columns>
-          <TableColumn fx:id="idColumn" prefWidth="75.0" text="序号" />
           <TableColumn fx:id="auidColumn" prefWidth="75.0" text="授权号" />
             <TableColumn fx:id="rankColumn" prefWidth="75.0" text="代理类别" />
             <TableColumn fx:id="customernameColumn" prefWidth="75.0" text="姓名" />
@@ -24,6 +23,7 @@
             <TableColumn fx:id="qqColumn" prefWidth="75.0" text="QQ号" />
             <TableColumn fx:id="weixinColumn" prefWidth="75.0" text="微信号" />
             <TableColumn fx:id="stateColumn" prefWidth="75.0" text="是否激活" />
+            <TableColumn fx:id="balanceColumn" prefWidth="75.0" text="账户余额" />
             <TableColumn fx:id="createTimeColumn" prefWidth="75.0" text="创建时间" />
         </columns>
          <columnResizePolicy>

@@ -37,9 +37,9 @@ public class MainApp extends Application {
 		launch(args);
 	}
 
-	public SqlSession getSqlSession()
+	public SqlSession getSqlSession(boolean flag)
 	{
-		return MybatisUtils.getSqlSession();
+		return MybatisUtils.getSqlSession(flag);
 	}
 
 	@Override

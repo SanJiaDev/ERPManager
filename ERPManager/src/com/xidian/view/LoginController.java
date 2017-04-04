@@ -51,25 +51,29 @@ public class LoginController {
 	{
 		String username = usernameField.getText();
 		String password = passwordField.getText();
-		SqlSession sqlSession = mainApp.getSqlSession();
-		managerUser = sqlSession.selectOne("com.xidian.ManagerUserXml.getUser", username);
-		if(managerUser != null)
-		{
-			if(password.equals(managerUser.getPassword()))
+		SqlSession sqlSession = mainApp.getSqlSession(true);
+		try {
+			managerUser = sqlSession.selectOne("com.xidian.ManagerUserXml.getUser", username);
+			if(managerUser != null)
 			{
-				mainApp.showMainWindow();
+				if(password.equals(managerUser.getPassword()))
+				{
+					mainApp.showMainWindow();
+				}
+				else
+				{
+					messageLabel.setText("用户名或密码错误！");
+				}
 			}
 			else
 			{
 				messageLabel.setText("用户名或密码错误！");
 			}
 		}
-		else
-		{
-			messageLabel.setText("用户名或密码错误！");
+		finally{
+			sqlSession.close();
 		}
 
-		sqlSession.close();
 	}
 
 

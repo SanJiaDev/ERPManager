@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xidian.BalanceXml"> <!-- 命名空间是文件的包名，定位该文件在哪个包下 -->
+
+	<insert id="addBalance" parameterType="String">
+		insert into balance (auid)
+		values              (#{auid});
+	</insert>
+
+</mapper>
