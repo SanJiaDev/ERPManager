@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.xidian.MainApp;
 import com.xidian.model.Balance;
 import com.xidian.model.Customer;
+import com.xidian.model.UpdateInfo;
 import com.xidian.util.DataValicateUtil;
 
 import javafx.fxml.FXML;
@@ -148,11 +149,22 @@ public class NewCustomerController {
 
 			int addCustomerResult = 0;
 			int addBalanceResult = 0;
+			int addUpdateInfoResult = 0;
 			try {
 
 				addCustomerResult = sqlSession.insert("com.xidian.CustomerXml.addCustomer", customer);
 
 				addBalanceResult = sqlSession.insert("com.xidian.BalanceXml.addBalance", customer.getAuid());
+
+				//封装更新客户信息
+				UpdateInfo updateInfo = new UpdateInfo();
+				updateInfo.setAuid(customer.getAuid());
+				updateInfo.setRank(customer.getRank());
+				updateInfo.setState(0);
+				updateInfo.setUpdateTime(LocalDate.now());
+				updateInfo.setUpdateReason("注册");
+
+				addUpdateInfoResult = sqlSession.insert("com.xidian.UpdateInfoXml.addUpdateInfo", updateInfo);
 
 				sqlSession.commit();//提交事务
 
@@ -163,7 +175,7 @@ public class NewCustomerController {
 				alert.setResizable(false);
 				alert.setTitle("保存结果");
 				alert.setHeaderText("");
-				if (addCustomerResult == 1 && addBalanceResult == 1)// 保存成功后清空表单数据
+				if (addCustomerResult == 1 && addBalanceResult == 1 && addUpdateInfoResult == 1)// 保存成功后清空表单数据
 				{
 					alert.setContentText("保存成功！");
 

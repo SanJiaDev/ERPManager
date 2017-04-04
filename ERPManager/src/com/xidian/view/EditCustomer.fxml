@@ -36,14 +36,14 @@
             <Label text="电话" GridPane.rowIndex="7" />
             <Label text="QQ" GridPane.rowIndex="8" />
             <Label text="微信" GridPane.rowIndex="9" />
-            <TextField fx:id="auidField" disable="true" GridPane.columnIndex="1" />
+            <TextField fx:id="auidField" disable="true" editable="false" GridPane.columnIndex="1" />
             <TextField fx:id="customernameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="idcardField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <TextField fx:id="qqField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <TextField fx:id="weixinField" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <ComboBox fx:id="rankBox" prefHeight="24.0" prefWidth="72.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="rankBox" disable="true" prefHeight="24.0" prefWidth="72.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ComboBox fx:id="sexBox" prefHeight="24.0" prefWidth="72.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <ComboBox fx:id="areaField" prefHeight="24.0" prefWidth="72.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
