@@ -410,6 +410,7 @@ public class MainApp extends Application {
 			queryOrderController.setEditStage(editStage);
 
 			editStage.showAndWait();
+
 		}
 		catch (IOException e) {
 			e.printStackTrace();
