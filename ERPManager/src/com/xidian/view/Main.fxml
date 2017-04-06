@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -23,6 +24,15 @@
                                  </children></AnchorPane>
                         </content>
                       </TitledPane>
+                      <TitledPane animated="false" prefWidth="176.0" text="收件地址管理">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0">
+                                 <children>
+                                    <Button layoutX="-7.0" layoutY="3.0" mnemonicParsing="false" onAction="#handleNewAddress" prefHeight="23.0" prefWidth="176.0" text="新建地址" />
+                                    <Button layoutX="-7.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleQueryAddress" prefHeight="23.0" prefWidth="176.0" text="查询地址" />
+                                 </children></AnchorPane>
+                        </content>
+                      </TitledPane>
                       <TitledPane animated="false" text="订单管理">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
@@ -41,7 +51,14 @@
                     </panes>
                   </Accordion>
                </children></AnchorPane>
-          <AnchorPane fx:id="anchorPaneContent" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+          <AnchorPane fx:id="anchorPaneContent" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="434.0" layoutY="280.0" text="欢迎使用" textFill="#2dd378">
+                     <font>
+                        <Font size="72.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
         </items>
       </SplitPane>
    </children>

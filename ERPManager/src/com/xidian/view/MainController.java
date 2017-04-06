@@ -57,4 +57,21 @@ public class MainController {
 	{
 		mainApp.showQueryUpdateInfo(anchorPaneContent);
 	}
+
+	/**
+	 * 打开新建收件地址面板
+	 */
+	@FXML
+	private void handleNewAddress()
+	{
+		mainApp.showNewAddress(anchorPaneContent);
+	}
+	/**
+	 * 打开查询收件地址面板
+	 */
+	@FXML
+	private void handleQueryAddress()
+	{
+		mainApp.showQueryAddress(anchorPaneContent);
+	}
 }

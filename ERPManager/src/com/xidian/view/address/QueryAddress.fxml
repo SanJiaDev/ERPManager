@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1175.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xidian.view.address.QueryAddressController">
+   <children>
+      <TableView fx:id="addressTable" layoutX="19.0" layoutY="42.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+        <columns>
+          <TableColumn fx:id="auidColumn" prefWidth="75.0" text="授权号" />
+            <TableColumn fx:id="receiverNameColumn" prefWidth="75.0" text="收件人姓名" />
+            <TableColumn fx:id="receiverAddressColumn" prefWidth="75.0" text="收件地址" />
+            <TableColumn fx:id="receiverPhoneColumn" prefWidth="75.0" text="收件人电话" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Label layoutX="426.0" layoutY="14.0" text="授权号" />
+      <TextField fx:id="auidField" layoutX="472.0" layoutY="10.0" prefHeight="25.0" />
+      <Label layoutX="660.0" layoutY="14.0" text="收货人姓名" />
+      <TextField fx:id="receiverNameField" layoutX="730.0" layoutY="10.0" prefHeight="25.0" />
+      <Button layoutX="610.0" layoutY="56.0" mnemonicParsing="false" onAction="#handleQueryAddress" prefWidth="100.0" text="查询" />
+   </children>
+</AnchorPane>

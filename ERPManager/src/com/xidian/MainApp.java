@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.xidian.model.Customer;
 import com.xidian.model.UpdateInfo;
+import com.xidian.model.address.Address;
 import com.xidian.util.MybatisUtils;
 import com.xidian.view.LoginController;
 import com.xidian.view.MainController;
@@ -20,6 +21,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import com.xidian.view.address.NewAddressController;
+import com.xidian.view.address.QueryAddressController;
 
 /**程序入口类，管理界面，控制器
  * @author lfq
@@ -248,6 +251,81 @@ public class MainApp extends Application {
 			queryUpdateInfoController.setEditStage(addStage);
 
 			addStage.showAndWait();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void showNewAddress(AnchorPane anchorPaneContent)
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/address/NewAddress.fxml"));
+			AnchorPane page = (AnchorPane)loader.load();
+
+			//先移除面板中的内容
+			anchorPaneContent.getChildren().removeAll(anchorPaneContent.getChildren());
+			//增加新建客户面板
+			anchorPaneContent.getChildren().add(page);
+
+			NewAddressController newAddressController = loader.getController();
+			newAddressController.setMainApp(this);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void showQueryAddress(AnchorPane anchorPaneContent)
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/address/QueryAddress.fxml"));
+			AnchorPane page = (AnchorPane)loader.load();
+
+			mainStage.setMaximized(true);
+			//先移除面板中的内容
+			anchorPaneContent.getChildren().removeAll(anchorPaneContent.getChildren());
+			//增加查询内容
+			anchorPaneContent.getChildren().add(page);
+
+			QueryAddressController queryAddressController = loader.getController();
+			queryAddressController.setMainApp(this);
+
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+
+	}
+
+	public void showEditAddress(Address selectedAddress)
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/address/EditAddress.fxml"));
+			AnchorPane page = (AnchorPane)loader.load();
+
+			Stage editStage = new Stage();
+			editStage.setTitle("收件地址信息");
+			editStage.initModality(Modality.WINDOW_MODAL);
+			editStage.initOwner(mainStage);
+			editStage.getIcons().add(new Image("file:resources/images/person.png"));
+			Scene scene = new Scene(page);
+			editStage.setScene(scene);
+
+			QueryAddressController queryAddressController = loader.getController();
+			queryAddressController.setMainApp(this);
+			queryAddressController.setAddress(selectedAddress);
+			queryAddressController.setEditStage(editStage);
+
+			editStage.showAndWait();
 		}
 		catch (IOException e) {
 			e.printStackTrace();

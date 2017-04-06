@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xidian.model.address.AddressXml"> <!-- 命名空间是文件的包名，定位该文件在哪个包下 -->
+
+	<insert id="addAddress" parameterType="Address">
+		insert into address (auid, receiverName,   receiverAddress,      receiverPhone)
+		values              (#{auid}, #{receiverName}, #{receiverAddress}, #{receiverPhone});
+	</insert>
+
+	<select id="getAddressByAuid" parameterType="String" resultType="Address">
+		select * from address where auid = #{auid}
+	</select>
+
+	<select id="getAddressByName" parameterType="String" resultType="Address">
+		select * from address where receivername = #{receivername}
+	</select>
+
+	<select id="getAllAddress" resultType="Address">
+		select * from address
+	</select>
+
+	<update id="updateAddress" parameterType="Address">
+		update address set receivername = #{receiverName}, receiveraddress = #{receiverAddress}, receiverphone = #{receiverPhone}
+		where auid = #{auid}
+	</update>
+
+	<delete id="deleteAddress" parameterType="String">
+		delete from address where auid = #{auid}
+	</delete>
+
+</mapper>
