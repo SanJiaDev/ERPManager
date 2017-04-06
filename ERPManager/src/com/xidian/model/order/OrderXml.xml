@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xidian.model.order.OrderXml"> <!-- 命名空间是文件的包名，定位该文件在哪个包下 -->
+
+ 	<select id="getOrderByOrderId" parameterType="String" resultType="Order">
+		select * from orderinfo where orderid = #{orderId}
+	</select>
+
+ 	<select id="getOrderByAuId" parameterType="String" resultType="Order">
+		select * from orderinfo where auid = #{auId};
+	</select>
+
+<!--  	<select id="getCustomerByRank" parameterType="String" resultType="Customer">
+		select * from customer where rank = #{rank};
+	</select> -->
+
+	<select id="getOrderAll"  resultType="Order">
+		select * from orderinfo ;
+	</select>
+
+<!-- 	<select id="getAllCustomer" resultType="Customer">
+		select customer.*, balance from customer inner join balance on customer.auid = balance.auid;
+	</select>  -->
+
+	<insert id="addOrder" parameterType="Order">
+		insert into orderinfo (auid,    rank,    deliverytime,    deliveryname,    orderid,    productid,    productnum,    productprice,    receivername,    receiverphone,    receiveraddress, waybillnumber)
+		values               (#{auId}, #{rank}, #{deliveryTime}, #{deliveryName}, #{orderId}, #{productId}, #{productNum}, #{productPrice}, #{receiverName}, #{receiverPhone}, #{receiverAddress},#{wayBillNumber});
+	</insert>
+
+<!-- 	<update id="updateCustomer" parameterType="Customer">
+		update customer set rank = #{rank}, customername = #{customerName}, sex = #{sex}, age = #{age}, idcard = #{idcard}, area = #{area}, address = #{address}, phone = #{phone}, qq = #{qq}, weixin = #{weixin}
+		where id = #{id};
+	</update>
+
+	<update id="updateCustomerOfState" parameterType="Customer">
+		update customer set state = #{state}
+		where auid = #{auid};
+	</update> -->
+
+</mapper>

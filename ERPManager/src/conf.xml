@@ -32,6 +32,7 @@
 		<mapper resource="com/xidian/model/UpdateInfoXml.xml"/>
 		<mapper resource="com/xidian/model/UpdateBalanceXml.xml"/>
 		<mapper resource="com/xidian/model/address/AddressXml.xml"/>
+		<mapper resource="com/xidian/model/order/OrderXml.xml"/>
 	</mappers>
 
 </configuration>

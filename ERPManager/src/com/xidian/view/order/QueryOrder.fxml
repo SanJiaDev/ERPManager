@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1175.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xidian.view.order.QueryOrderController">
+   <children>
+      <Group AnchorPane.leftAnchor="280.0">
+         <children>
+            <Button layoutX="313.0" layoutY="48.0" mnemonicParsing="false" onAction="#handleQueryOrder" text="查询订单" />
+            <Label layoutX="357.0" layoutY="18.0" text="授权号" />
+            <TextField fx:id="auIdField" layoutX="400.0" layoutY="14.0" />
+            <TextField fx:id="orderIdField" layoutX="171.0" layoutY="14.0" />
+            <Label layoutX="123.0" layoutY="18.0" text="订单号" />
+         </children>
+      </Group>
+      <TableView fx:id="orderTable" layoutX="19.0" layoutY="42.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+        <columns>
+            <TableColumn fx:id="auIdColumn" prefWidth="75.0" text="授权号" />
+            <TableColumn fx:id="rankColumn" prefWidth="75.0" text="代理类别" />
+          <TableColumn fx:id="orderIdColumn" prefWidth="75.0" text="订单号" />
+            <TableColumn fx:id="wayBillNumberColumn" prefWidth="75.0" text="运单号" />
+            <TableColumn fx:id="deliveryNameColumn" prefWidth="75.0" text="发件人" />
+            <TableColumn fx:id="productIdColumn" prefWidth="75.0" text="产品类型" />
+            <TableColumn fx:id="productNumColumn" prefWidth="75.0" text="产品数量" />
+            <TableColumn fx:id="productPriceColumn" prefWidth="75.0" text="产品价格" />
+            <TableColumn fx:id="receiverNameColumn" prefWidth="75.0" text="收件人" />
+            <TableColumn fx:id="receiverPhoneColumn" prefWidth="75.0" text="收件人电话" />
+            <TableColumn fx:id="receiverAddressColumn" prefWidth="150.0" text="收件地址" />
+            <TableColumn fx:id="deliveryTimeColumn" prefWidth="75.0" text="发件时间" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</AnchorPane>

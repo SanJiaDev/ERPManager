@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xidian.view.order.QueryOrderController">
+   <children>
+      <GridPane layoutX="10.0" prefHeight="334.0" prefWidth="379.0" AnchorPane.topAnchor="10.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="67.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="10.0" prefWidth="314.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="订单号" />
+            <Label text="代理类别" GridPane.rowIndex="2" />
+            <Label text="授权号" GridPane.rowIndex="3" />
+            <Label text="发货时间" GridPane.rowIndex="4" />
+            <Label text="发件人" GridPane.rowIndex="5" />
+            <Label text="产品类型" GridPane.rowIndex="6" />
+            <Label text="产品数量" GridPane.rowIndex="7" />
+            <Label text="产品价格" GridPane.rowIndex="8" />
+            <Label text="收件人" GridPane.rowIndex="9" />
+            <Label text="收件人电话" GridPane.rowIndex="10" />
+            <TextField fx:id="order2IdField" editable="false" GridPane.columnIndex="1" />
+            <TextField fx:id="auId2Field" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="deliveryNameField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="productNumField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="productPriceField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <TextField fx:id="receiverNameField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <TextField fx:id="receiverPhoneField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <TextField fx:id="rankField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="deliveryTimeField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="productIdField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="receiverAddressField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <Label text="收件人地址" GridPane.rowIndex="11" />
+            <Label text="运单号" GridPane.rowIndex="1" />
+            <TextField fx:id="wayBillNumberField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <Button layoutX="150.0" layoutY="351.0" mnemonicParsing="false" onAction="#handleQyeryInfo" prefHeight="24.0" prefWidth="102.0" text="关闭" AnchorPane.topAnchor="361.0" />
+      <TextField fx:id="createTimeField" layoutX="10.0" layoutY="340.0" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" />
+   </children>
+</AnchorPane>

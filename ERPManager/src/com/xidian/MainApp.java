@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.xidian.model.Customer;
 import com.xidian.model.UpdateInfo;
 import com.xidian.model.address.Address;
+import com.xidian.model.order.Order;
 import com.xidian.util.MybatisUtils;
 import com.xidian.view.LoginController;
 import com.xidian.view.MainController;
@@ -23,6 +24,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import com.xidian.view.address.NewAddressController;
 import com.xidian.view.address.QueryAddressController;
+import com.xidian.view.order.NewOrderController;
+import com.xidian.view.order.QueryOrderController;
 
 /**程序入口类，管理界面，控制器
  * @author lfq
@@ -332,5 +335,87 @@ public class MainApp extends Application {
 		}
 
 	}
+
+	/**显示新建订单界面
+	 * @param anchorPaneContent
+	 */
+	public void showNewOrder(AnchorPane anchorPaneContent) {
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/order/NewOrder.fxml"));
+			AnchorPane page = (AnchorPane)loader.load();
+
+			mainStage.setMaximized(true);
+			//先移除面板中的内容
+			anchorPaneContent.getChildren().removeAll(anchorPaneContent.getChildren());
+			//增加新建客户面板
+			anchorPaneContent.getChildren().add(page);
+
+			NewOrderController newOrderController = loader.getController();
+			newOrderController.setMainApp(this);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/**显示查询订单界面
+	 * @param anchorPaneContent
+	 */
+	public void showQueryOrder(AnchorPane anchorPaneContent) {
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/order/QueryOrder.fxml"));
+			AnchorPane page = (AnchorPane)loader.load();
+
+			mainStage.setMaximized(true);
+			//先移除面板中的内容
+			anchorPaneContent.getChildren().removeAll(anchorPaneContent.getChildren());
+			//增加新建客户面板
+			anchorPaneContent.getChildren().add(page);
+
+			QueryOrderController queryOrderController = loader.getController();
+			queryOrderController.setMainApp(this);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/**显示单个详细订单信息界面
+	 * @param order
+	 */
+	public void showOrderInfo(Order order) {
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/order/QueryOrderInfo.fxml"));
+			AnchorPane page = (AnchorPane)loader.load();
+
+			Stage editStage = new Stage();
+			editStage.setTitle("订单信息");
+			editStage.initModality(Modality.WINDOW_MODAL);
+			editStage.initOwner(mainStage);
+			editStage.getIcons().add(new Image("file:resources/images/person.png"));
+			Scene scene = new Scene(page);
+			editStage.setScene(scene);
+
+			QueryOrderController queryOrderController = loader.getController();
+			queryOrderController.setMainApp(this);
+			queryOrderController.setOrder(order);
+			queryOrderController.setEditStage(editStage);
+
+			editStage.showAndWait();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 
 }

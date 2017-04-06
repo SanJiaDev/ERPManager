@@ -74,4 +74,21 @@ public class MainController {
 	{
 		mainApp.showQueryAddress(anchorPaneContent);
 	}
+	/**
+	 * 打开新建订单面板
+	 */
+	@FXML
+	private void handleNewOrder()
+	{
+		mainApp.showNewOrder(anchorPaneContent);
+	}
+
+	/**
+	 * 打开订单查询面板
+	 */
+	@FXML
+	private void handleQueryOrder()
+	{
+		mainApp.showQueryOrder(anchorPaneContent);
+	}
 }
